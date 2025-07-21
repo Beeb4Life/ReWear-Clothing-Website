@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>ReWare Clothing</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="bg-white shadow-md px-6 py-4">
+    <nav class="flex items-center justify-between">
+      <h1 class="text-2xl font-semibold text-gray-800">
+        <span class="text-orange-500 font-bold">Re</span>Wear
+      </h1>
+
+      <ul class="flex gap-6 text-gray-700 font-semibold">
+        <li>
+          <a href="/templates/index.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Home</a>
+        </li>
+        <li>
+          <a href="/templates/Listitems.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Start Swapping</a>
+        </li>
+        <li>
+          <a href="/templates/MainCategory.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Category</a>
+        </li>
+        <li>
+          <a href="/templates/About.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">About The Developer</a>
+        </li>
+        <li>
+          <a href="/templates/contact_us.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Contact</a>
+        </li>
+        <li>
+          <a href="/templates/login.html" class="px-3 py-2 rounded-md bg-orange-500 text-white hover:bg-white border-2 hover:border-orange-500 hover:text-black"> Login </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+
+  <!-- --------------------------------------------------------------------------------------------------------- -->
+
+
+  <section class="max-w-6xl mx-auto px-6 py-10">
+  <!-- Profile Info -->
+  <div class="flex flex-col md:flex-row items-center md:items-start justify-between mb-10 gap-6">
+   <!-- Profile Picture Upload -->
+  <div class="flex items-center gap-6">
+  <!-- Image Upload Box -->
+  <label class="relative w-24 h-24 border-2 border-dashed border-blue-400 flex items-center justify-center cursor-pointer text-gray-400 hover:bg-blue-50 transition rounded-full overflow-hidden">
+    <input type="file" id="profileImageInput" class="hidden" accept="image/*" onchange="previewImage(event)" />
+    <img id="profileImagePreview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" class="w-full h-full object-cover" />
+  </label>
+
+  <!-- Text Info -->
+  <div>
+    <h2 class="text-xl font-semibold">Hi, Alison!</h2>
+    <p class="text-sm text-gray-500">alisonpinto@gmail.com</p>
+    <div class="mt-2 flex items-center gap-2 bg-yellow-100 text-yellow-800 px-2 py-1 rounded-md text-sm font-medium w-fit">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="coin" class="w-4 h-4" />
+      120 Points
+    </div>
+  </div>
+</div>
+
+
+    <!-- Edit Profile Button -->
+    <div>
+      <button class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">Edit Profile</button>
+    </div>
+  </div>
+
+  <!-- Bio -->
+  <p class="text-gray-600 mb-10 leading-relaxed max-w-3xl">
+    Hi! I'm someone who believes in smart, sustainable fashion. I love discovering unique styles while helping reduce waste through clothing exchange. Excited to be part of a community that values both style and the planet.
+  </p>
+
+  <!-- My Listings Section -->
+  <div class="bg-[#FBE7D5] rounded-xl p-6 mb-10">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-semibold">My Listings</h3>
+      <a href="#" class="text-sm text-gray-600 hover:text-orange-500">See more</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Listing Cards -->
+      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
+      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
+      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
+    </div>
+  </div>
+
+  <!-- My Purchase Section -->
+  <div class="bg-[#FBE7D5] rounded-xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-semibold">My Purchase</h3>
+      <a href="#" class="text-sm text-gray-600 hover:text-orange-500">See more</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Purchase Cards -->
+      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
+      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
+      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------------------------------------------------------- -->
+
+<footer class="bg-[#131212] px-6 py-10 text-white mt-20">
+  <div class="max-w-7xl mx-15 flex flex-col md:flex-row justify-between gap-10">
+    
+    <!-- Left: Info Links -->
+    <div class="md:w-1/2 grid grid-cols-2 gap-5">
+      <h1 class="text-4xl font-semibold text-white">
+        <span class="text-orange-500 font-bold">Re</span>Wear
+      </h1>
+      <br>
+
+      <ul class="space-y-2">
+       <p class ="text-orange-500 text-1xl">HelpFul Links</p>       
+        <li><a href="/templates/About.html" class="hover:underline">About Us</a></li>
+        <li><a href="/templates/Terms_Condition.html" class="hover:underline">Terms & Conditions</a></li>
+        <li><a href="/templates/Privacy.html" class="hover:underline">Privacy Policy</a></li>
+        <li><a href="#" class="hover:underline">FAQs</a></li>
+      </ul>
+
+      <ul class="space-y-2">
+        <li><a href="/templates/index.html" class="hover:underline">Home</a></li>
+        <li><a href="/templates/Listitems.html" class="hover:underline">Start Swaping</a></li>
+        <li><a href="/templates/MainCategory.html" class="hover:underline">Category</a></li>
+        <li><a href="/templates/login.html" class="hover:underline">Login</a></li>
+      </ul>
+
+      
+    </div>
+
+    <!-- Right: Contact -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+      <ul class="space-y-2">
+        <li>Email: <a href="mailto:support@rewear.com" class="hover:underline text-Orange-600">support@rewear.com</a></li>
+        <li>
+          <input type="email" placeholder="Enter your email" class="w-full max-w-md border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"/>
+        </li>
+
+        <li>Phone: <a href="tel:+918000000000" class="hover:underline text-orange-500">+91 80000 00000</a></li>
+        <li>Address: Thane, Maharashtra, India</li>
+        <div class="space-x-4">
+          <i class="fa-brands fa-linkedin"></i> <i class="fa-brands fa-github"></i> <i class="fa-brands fa-instagram"></i>
+        </div>
+        
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="text-center mt-10 text-sm text-gray-600">
+    &copy; 2025 ReWear. All rights reserved By Aiden, Alison and Praful
+  </div>
+</footer>
+
+</body>
+
+<script>
+  function previewImage(event) {
+    const input = event.target;
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      const preview = document.getElementById("profileImagePreview");
+      preview.src = reader.result;
+    };
+
+    if (input.files && input.files[0]) {
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+
+
+</html>

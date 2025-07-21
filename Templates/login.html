@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>ReWare Clothing</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="bg-white shadow-md px-6 py-4">
+    <nav class="flex items-center justify-between">
+      <h1 class="text-2xl font-semibold text-gray-800">
+        <span class="text-orange-500 font-bold">Re</span>Wear
+      </h1>
+
+      <ul class="flex gap-6 text-gray-700 font-semibold">
+        <li>
+          <a href="/templates/index.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Home</a>
+        </li>
+        <li>
+          <a href="/templates/Listitems.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Start Swapping</a>
+        </li>
+        <li>
+          <a href="/templates/MainCategory.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Category</a>
+        </li>
+        <li>
+          <a href="/templates/About.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">About The Developer</a>
+        </li>
+        <li>
+          <a href="/templates/contact_us.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Contact</a>
+        </li>
+        <li>
+          <a href="/templates/login.html" class="px-3 py-2 rounded-md bg-orange-500 text-white hover:bg-white border-2 hover:border-orange-500 hover:text-black"> Login </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+ 
+  <!-- here i have added the bg img -->
+  <div class="relative h-[90vh] bg-[url('/images/bg_image.jpg')] bg-cover bg-center">
+    <div class="bg-white/50 backdrop-invert backdrop-opacity-10 h-166">
+      <!-- Login Section -->
+    <div class="min-h-screen flex items-center justify-center bg-cover bg-center">
+      <div class="bg-transparent bg-opacity-60 backdrop-blur-md rounded-xl p-8 w-[90%] max-w-md shadow-xl opacity-650">
+    
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Sign In</h2>
+
+    <form>
+      <!-- Email -->
+      <div class="mb-4">
+        <label class="block text-gray-800 mb-1" for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400">
+      </div>
+
+      <!-- Password -->
+      <div class="mb-6">
+        <label class="block text-gray-800 mb-1" for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400">
+      </div>
+
+      <!-- Sign In Button -->
+      <button type="submit"
+        class="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-md transition duration-300">
+        Sign in
+      </button>
+
+      <!-- OR Divider -->
+      <div class="text-center my-4 text-gray-600 font-medium">OR</div>
+
+      <!-- Google Sign-In -->
+      <button type="button"
+        class="w-full flex items-center justify-center gap-3 border border-gray-400 py-2 rounded-md hover:bg-gray-100 transition duration-300">
+       <i class="fa-brands fa-google w-5 h-5 "></i> Sign in with Google 
+      </button>
+    </form>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+
+</body>
+</html>

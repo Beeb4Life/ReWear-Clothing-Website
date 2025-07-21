@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>ReWare Clothing</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="bg-white shadow-md px-6 py-4">
+    <nav class="flex items-center justify-between">
+      <h1 class="text-2xl font-semibold text-gray-800">
+        <span class="text-orange-500 font-bold">Re</span>Wear
+      </h1>
+
+      <ul class="flex gap-6 text-gray-700 font-semibold">
+        <li>
+          <a href="/templates/index.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Home</a>
+        </li>
+        <li>
+          <a href="/templates/Listitems.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Start Swapping</a>
+        </li>
+        <li>
+          <a href="/templates/MainCategory.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Category</a>
+        </li>
+        <li>
+          <a href="/templates/About.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">About The Developer</a>
+        </li>
+        <li>
+          <a href="/templates/contact_us.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Contact</a>
+        </li>
+        <li>
+          <a href="/templates/login.html" class="px-3 py-2 rounded-md bg-orange-500 text-white hover:bg-white border-2 hover:border-orange-500 hover:text-black"> Login </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- --------------------------------------------------------------------------------------------------------- -->
+
+  <!-- Meet the Developers Section -->
+<section class="max-w-6xl mx-auto my-20 px-6">
+  <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Meet the Developers</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    
+    <!-- Aiden's Card -->
+    <div class="bg-white shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition">
+      <img src="/images/Aiden.png" alt="Aiden" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+      <h3 class="text-xl font-semibold text-gray-800">Aiden</h3>
+      <p class="text-orange-600 font-medium mb-2">Git & Repository Manager</p>
+      <p class="text-gray-600">Managed all things GitHub, ensuring smooth collaboration and proper version control throughout the project.</p>
+      <br>
+      <div class="gap-5 space-x-6 text-2xl">
+        <a href="https://github.com/Beeb4Life"> <i class="fa-brands fa-github"></i>  </a>
+        <a href="https://www.linkedin.com/in/aidenrodrigues07?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"> <i class="fa-brands fa-linkedin"></i> </a>
+      </div>
+    </div>
+
+    <!-- Alison's Card -->
+    <div class="bg-white shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition">
+      <img src="/images/Alison.png" alt="Alison" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+      <h3 class="text-xl font-semibold text-gray-800">Alison</h3>
+      <p class="text-orange-600 font-medium mb-2">Front-End Developer</p>
+      <p class="text-gray-600">Crafted the entire user interface using Tailwind CSS, ensuring a responsive and seamless user experience.</p>
+      <br>
+      <div class="gap-5 space-x-6 text-2xl">
+        <a href="https://github.com/Alisonpinto"> <i class="fa-brands fa-github"></i>  </a>
+        <a href="https://www.linkedin.com/in/alison-pinto-24862026b"> <i class="fa-brands fa-linkedin"></i> </a>
+      </div>
+    </div>
+
+    <!-- Praful's Card -->
+    <div class="bg-white shadow-lg rounded-xl p-6 text-center hover:shadow-xl transition">
+      <img src="/images/Praful.jpg" alt="Praful" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+      <h3 class="text-xl font-semibold text-gray-800">Praful</h3>
+      <p class="text-orange-600 font-medium mb-2">Back-End Developer</p>
+      <p class="text-gray-600">Built the server logic and database connections that power the functionality of the ReWear platform.</p>
+      <br>
+      <div class="gap-5 space-x-6  text-2xl">
+        <a href=" https://github.com/PrafulCodes "> <i class="fa-brands fa-github"></i>  </a>
+        <a href="#"> <i class="fa-brands fa-linkedin"></i> </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- --------------------------------------------------------------------------------------------------------- -->
+
+<footer class="bg-[#131212] px-6 py-10 text-white mt-20">
+  <div class="max-w-7xl mx-15 flex flex-col md:flex-row justify-between gap-10">
+    
+    <!-- Left: Info Links -->
+    <div class="md:w-1/2 grid grid-cols-2 gap-5">
+      <h1 class="text-4xl font-semibold text-white">
+        <span class="text-orange-500 font-bold">Re</span>Wear
+      </h1>
+      <br>
+
+      <ul class="space-y-2">
+       <p class ="text-orange-500 text-1xl">HelpFul Links</p>       
+        <li><a href="/templates/About.html" class="hover:underline">About Us</a></li>
+        <li><a href="/templates/Terms_Condition.html" class="hover:underline">Terms & Conditions</a></li>
+        <li><a href="/templates/Privacy.html" class="hover:underline">Privacy Policy</a></li>
+        <li><a href="#" class="hover:underline">FAQs</a></li>
+      </ul>
+
+      <ul class="space-y-2">
+        <li><a href="/templates/index.html" class="hover:underline">Home</a></li>
+        <li><a href="/templates/Listitems.html" class="hover:underline">Start Swaping</a></li>
+        <li><a href="/templates/MainCategory.html" class="hover:underline">Category</a></li>
+        <li><a href="/templates/login.html" class="hover:underline">Login</a></li>
+      </ul>
+
+      
+    </div>
+
+    <!-- Right: Contact -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+      <ul class="space-y-2">
+        <li>Email: <a href="mailto:support@rewear.com" class="hover:underline text-Orange-600">support@rewear.com</a></li>
+        <li>
+          <input type="email" placeholder="Enter your email" class="w-full max-w-md border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"/>
+        </li>
+
+        <li>Phone: <a href="tel:+918000000000" class="hover:underline text-orange-500">+91 80000 00000</a></li>
+        <li>Address: Thane, Maharashtra, India</li>
+        <div class="space-x-4">
+          <i class="fa-brands fa-linkedin"></i> <i class="fa-brands fa-github"></i> <i class="fa-brands fa-instagram"></i>
+        </div>
+        
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="text-center mt-10 text-sm text-gray-600">
+    &copy; 2025 ReWear. All rights reserved By Aiden, Alison and Praful
+  </div>
+</footer>
+
+</body>
+</html>
