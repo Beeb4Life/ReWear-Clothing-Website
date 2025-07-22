@@ -16,3 +16,9 @@ const scrollContainer = document.getElementById('autoScroll');
 
   setInterval(autoScroll, scrollInterval);
 
+  function toggleMenu() {
+    const sideMenu = document.getElementById('sideMenu');
+    sideMenu.classList.toggle('translate-x-full');
+  }
+
+
