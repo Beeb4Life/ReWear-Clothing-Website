@@ -1,8 +1,11 @@
-const scrollContainer = document.getElementById('autoScroll');
+window.addEventListener("DOMContentLoaded", () => {
+  const scrollContainer = document.getElementById('autoScroll');
+
+  if (!scrollContainer) return; // Safe guard
 
   let scrollAmount = 0;
-  const scrollStep = 1;       // Speed of scroll
-  const scrollInterval = 20;  // Time between steps (ms)
+  const scrollStep = 1;
+  const scrollInterval = 20;
 
   function autoScroll() {
     scrollAmount += scrollStep;
@@ -15,10 +18,12 @@ const scrollContainer = document.getElementById('autoScroll');
   }
 
   setInterval(autoScroll, scrollInterval);
+});
+
 
   function toggleMenu() {
     const sideMenu = document.getElementById('sideMenu');
     sideMenu.classList.toggle('translate-x-full');
   }
 
-
+  
