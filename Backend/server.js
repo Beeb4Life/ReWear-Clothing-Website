@@ -1,58 +1,72 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const path = require("path");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+// server.js
+import express from "express";
+import cors from "cors"; // ✅ Add this
+import multer from "multer";
+import path from "path";
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 5000;
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors()); // ✅ Enable CORS
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Serve static files (optional, for CSS, JS, images)
-app.use(express.static(path.join(__dirname, "../")));
-
-// MongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/contactDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("✅ MongoDB connected"))
-.catch((err) => console.error("❌ MongoDB connection error:", err));
-
-// Schema and Model
-const contactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  subject: String,
-  message: String
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const uploadPath = path.join(__dirname, "uploads");
+    if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath);
+    cb(null, uploadPath);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
 });
 
-const Contact = mongoose.model("Contact", contactSchema);
+const upload = multer({ storage: storage });
 
-// Serve the contact page from Templates
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../Templates/contact_us.html"));
-});
-
-// API to handle form submission
-app.post("/contact", async (req, res) => {
+app.post("/upload", upload.single("image"), (req, res) => {
   try {
-    const { name, email, subject, message } = req.body;
-    const newContact = new Contact({ name, email, subject, message });
-    await newContact.save();
-    res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    const { name, price } = req.body;
+    const image = req.file?.filename;
+
+    if (!name || !price || !image) {
+      return res.status(400).json({ message: "All fields are required." });
+    }
+
+    const product = { name, price, image };
+
+    const filePath = path.join(__dirname, "products.json");
+    let products = [];
+
+    if (fs.existsSync(filePath)) {
+      products = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    }
+
+    products.push(product);
+    fs.writeFileSync(filePath, JSON.stringify(products, null, 2));
+
+    res.status(200).json({ message: "Product uploaded successfully!" });
+  } catch (error) {
+    console.error("Upload error:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+app.get("/products", (req, res) => {
+  const filePath = path.join(__dirname, "products.json");
+  if (fs.existsSync(filePath)) {
+    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    res.status(200).json(data);
+  } else {
+    res.status(200).json([]);
+  }
 });
 
-
-
+app.listen(5000, () => {
+  console.log("App is running on port 5000");
+});

@@ -73,7 +73,7 @@
         <p id="dashUserEmail" class="text-sm text-gray-500">user@example.com</p>
         <div class="mt-2 bg-yellow-100 text-yellow-800 px-2 py-1 rounded-md text-sm w-fit">
           <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="coin" class="inline w-4 h-4" />
-          Your Points: <span id="userPoints">0</span>
+          Your Points: <span id="userPoints">200</span>
         </div>
       </div>
     </div>
@@ -142,6 +142,42 @@
   </div>
 </footer>
 
+
+<!--Upladthings-->
+<script>
+  // Fetch product listings from backend
+  fetch("http://localhost:5000/products")
+    .then((res) => res.json())
+    .then((listings) => {
+      const container = document.getElementById("myListings");
+
+      if (!listings || listings.length === 0) {
+        container.innerHTML = "<p class='text-center col-span-full'>No listings yet.</p>";
+      } else {
+        listings.forEach(({ name, price, image }) => {
+          const card = document.createElement("div");
+          card.className = "bg-white p-4 shadow rounded-md";
+          card.innerHTML = `
+            <img src="http://localhost:5000/uploads/${image}" alt="${name}" class="w-full h-48 object-contain mb-2 rounded" />
+            <h3 class="text-lg font-semibold">${name}</h3>
+            <p class="text-gray-600">${price}</p>
+          `;
+          container.appendChild(card);
+        });
+      }
+    })
+    .catch((err) => {
+      // console.error("Failed to load listings:", err);
+      document.getElementById("myListings").innerHTML =
+        "<p class='text-center col-span-full text-red-600'>Error loading listings.</p>";
+    });
+</script>
+
+
+
+
+
+
 <!-- SCRIPTS -->
 <script>
   const firebaseConfig = {
@@ -208,3 +244,4 @@
 <script src="/static/script.js"></script>
 </body>
 </html>
+
