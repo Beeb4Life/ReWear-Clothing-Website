@@ -74,6 +74,7 @@
         <div class="mt-2 bg-yellow-100 text-yellow-800 px-2 py-1 rounded-md text-sm w-fit">
           <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="coin" class="inline w-4 h-4" />
           Your Points: <span id="userPoints">200</span>
+
         </div>
       </div>
     </div>
@@ -85,20 +86,12 @@
   </div>
 
   <!-- My Listings -->
-  <div id="myListings" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
-
-  <!-- My Purchase -->
+   <h2 class="text-black font-bold text-3xl">My Listings</h2>
   <div class="bg-[#FBE7D5] rounded-xl p-6 mt-10">
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-lg font-semibold">My Purchase</h3>
-      <a href="#" class="text-sm text-gray-600 hover:text-orange-500">See more</a>
+    <div id="myListings" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
-      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
-      <div class="bg-white h-40 rounded-md border border-orange-300"></div>
-    </div>
-  </div>
+   </div>
+
 </section>
 
 <!-- FOOTER -->
@@ -240,6 +233,19 @@
     reader.readAsDataURL(event.target.files[0]);
   }
 </script>
+<script>
+  // Set initial value (only if userPoints not found)
+  if (localStorage.getItem("userPoints") === null) {
+    localStorage.setItem("userPoints", "200");
+  }
+
+  const pointsDisplay = document.getElementById("userPoints");
+  if (pointsDisplay) {
+    pointsDisplay.textContent = localStorage.getItem("userPoints");
+  }
+</script>
+
+
 
 <script src="/static/script.js"></script>
 </body>

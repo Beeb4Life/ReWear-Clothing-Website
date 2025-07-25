@@ -163,21 +163,21 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
     <!-- Card 1 -->
     <div class="bg-white p-6 rounded-xl border border-red-500">
-      <img src="" alt="Sign Up Icon" class="h-50 max-w-100 mx-auto mb-4">
+      <img src="/Images/login.png" alt="Sign Up Icon" class="h-50 max-w-100 mx-auto mb-4">
       <h2 class="text-xl font-semibold text-center mb-2">1. Sign Up & Create Profile</h2>
       <p class="text-center text-gray-700">Join ReWear for free and build your profile to start swapping clothes with your community.</p>
     </div>
 
     <!-- Card 2 -->
     <div class="bg-white p-6 rounded-xl border border-red-500">
-      <img src="" alt="List Item Icon" class="h-16 mx-auto mb-4">
+      <img src="/Images/listing final.png" alt="List Item Icon" class="h-16 mx-auto mb-4">
       <h2 class="text-xl font-semibold text-center mb-2">2. List Your Clothes</h2>
       <p class="text-center text-gray-700">Upload images, describe your item, and either offer it for swap or redeemable points.</p>
     </div>
 
     <!-- Card 3 -->
     <div class="bg-white p-6 rounded-xl border border-red-500">
-      <img src="" alt="Swap Icon" class="h-16 mx-auto mb-4">
+      <img src="/Images/start swapping.png" alt="Swap Icon" class="h-16 mx-auto mb-4">
       <h2 class="text-xl font-semibold text-center mb-2">3. Swap & Earn Points</h2>
       <p class="text-center text-gray-700">Request a swap or redeem your points to get clothes you love — all sustainably!</p>
     </div>
@@ -531,43 +531,28 @@
 </footer>
 
 <script>
-// Set initial points if not present
-if (localStorage.getItem("userPoints") === null) {
-  localStorage.setItem("userPoints", "200");
-}
-
-let userPoints = parseInt(localStorage.getItem("userPoints"), 10);
-
-// Show points on page load
-window.addEventListener("DOMContentLoaded", () => {
-  const display = document.getElementById("userPoints");
-  if (display) {
-    display.textContent = userPoints;
+  // Initialize points if not already set
+  if (localStorage.getItem("userPoints") === null) {
+    localStorage.setItem("userPoints", "200");
   }
-});
 
-// Attach event listeners to all buy buttons
-document.querySelectorAll('.buy-btn').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const cost = parseInt(btn.getAttribute('data-points'), 10);
+  document.querySelectorAll('.buy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cost = parseInt(btn.getAttribute('data-points'), 10);
+      let userPoints = parseInt(localStorage.getItem("userPoints"), 10);
 
-    if (userPoints >= cost) {
-      userPoints -= cost;
-      localStorage.setItem("userPoints", userPoints.toString());
+      if (userPoints >= cost) {
+        userPoints -= cost;
+        localStorage.setItem("userPoints", userPoints.toString());
 
-      // Update UI if element exists
-      const display = document.getElementById("userPoints");
-      if (display) {
-        display.textContent = userPoints;
+        alert(`✅ Points Deducted: ${cost}\n🪙 Remaining Points: ${userPoints}`);
+      } else {
+        alert("❌ Not enough points!");
       }
-
-      alert(`✅ Points Deducted: ${cost}\n🪙 Remaining Points: ${userPoints}`);
-    } else {
-      alert("❌ Not enough points!");
-    }
+    });
   });
-});
 </script>
+
 
 <script src="/static/script.js"></script>
 </body>

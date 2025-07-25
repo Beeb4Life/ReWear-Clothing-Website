@@ -1,21 +1,60 @@
 // server.js
 import express from "express";
-import cors from "cors"; // ✅ Add this
+import cors from "cors";
 import multer from "multer";
 import path from "path";
-import { fileURLToPath } from 'url';
-import fs from 'fs';
+import { fileURLToPath } from "url";
+import fs from "fs";
+import mongoose from "mongoose"; // ✅ MongoDB
+import dotenv from "dotenv"; // ✅ Load env vars
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-
-app.use(cors()); // ✅ Enable CORS
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// ✅ MongoDB connection
+mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/contact-form", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
+
+// ✅ Mongoose schema for contact
+const contactSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  subject: String,
+  message: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
+const Contact = mongoose.model("Contact", contactSchema);
+
+// ✅ Handle contact form POST
+app.post("/contact", async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, message: "Name, email, and message are required." });
+  }
+
+  try {
+    await Contact.create({ name, email, subject, message });
+    res.status(200).json({ success: true, message: "Message saved successfully." });
+  } catch (err) {
+    console.error("Contact save error:", err);
+    res.status(500).json({ success: false, message: "Internal server error." });
+  }
+});
+
+// ✅ Multer setup for image upload
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const uploadPath = path.join(__dirname, "uploads");
@@ -29,6 +68,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// ✅ Upload product endpoint
 app.post("/upload", upload.single("image"), (req, res) => {
   try {
     const { name, price } = req.body;
@@ -39,7 +79,6 @@ app.post("/upload", upload.single("image"), (req, res) => {
     }
 
     const product = { name, price, image };
-
     const filePath = path.join(__dirname, "products.json");
     let products = [];
 
@@ -57,6 +96,7 @@ app.post("/upload", upload.single("image"), (req, res) => {
   }
 });
 
+// ✅ Get all products
 app.get("/products", (req, res) => {
   const filePath = path.join(__dirname, "products.json");
   if (fs.existsSync(filePath)) {
@@ -67,6 +107,7 @@ app.get("/products", (req, res) => {
   }
 });
 
+// ✅ Start the server
 app.listen(5000, () => {
-  console.log("App is running on port 5000");
+  console.log("🚀 App is running on port 5000");
 });

@@ -1,3 +1,6 @@
 # ReWear-Clothing
 
-this is ReWare a colothing space where u can swap cloths
+To make it work it your device 
+just clone it 
+cd Backend 
+npm install
