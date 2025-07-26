@@ -71,6 +71,7 @@
       loginBtn.classList.remove("hidden");
     }
   });
+  
 </script>
 
 <body>
@@ -163,23 +164,23 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
     <!-- Card 1 -->
     <div class="bg-white p-6 rounded-xl border border-red-500">
-      <img src="/Images/login.png" alt="Sign Up Icon" class="h-50 max-w-100 mx-auto mb-4">
+      <img src="/Images/login.png" alt="Sign Up Icon" class="h-32 w-auto object-contain mx-auto mb-4">
       <h2 class="text-xl font-semibold text-center mb-2">1. Sign Up & Create Profile</h2>
       <p class="text-center text-gray-700">Join ReWear for free and build your profile to start swapping clothes with your community.</p>
     </div>
 
     <!-- Card 2 -->
     <div class="bg-white p-6 rounded-xl border border-red-500">
-      <img src="/Images/listing final.png" alt="List Item Icon" class="h-16 mx-auto mb-4">
+      <img src="/Images/listing final.png" alt="List Item Icon" class="h-32 w-auto object-contain mx-auto mb-4">
       <h2 class="text-xl font-semibold text-center mb-2">2. List Your Clothes</h2>
       <p class="text-center text-gray-700">Upload images, describe your item, and either offer it for swap or redeemable points.</p>
     </div>
 
     <!-- Card 3 -->
     <div class="bg-white p-6 rounded-xl border border-red-500">
-      <img src="/Images/start swapping.png" alt="Swap Icon" class="h-16 mx-auto mb-4">
-      <h2 class="text-xl font-semibold text-center mb-2">3. Swap & Earn Points</h2>
-      <p class="text-center text-gray-700">Request a swap or redeem your points to get clothes you love — all sustainably!</p>
+      <img src="/Images/start swapping.png" alt="Swap Icon" class="h-32 w-auto object-contain mx-auto mb-4">
+      <h2 class="text-xl font-semibold text-center mb-2">3. Explore our categories</h2>
+      <p class="text-center text-gray-700">Browse through our categories and find the perfect outfit for you.</p>
     </div>
   </div>
 </div>
@@ -531,7 +532,7 @@
 </footer>
 
 <script>
-  // Initialize points if not already set
+  // Set initial value only if not already set
   if (localStorage.getItem("userPoints") === null) {
     localStorage.setItem("userPoints", "200");
   }
@@ -550,8 +551,12 @@
         alert("❌ Not enough points!");
       }
     });
+     window.addEventListener('beforeunload', () => {
+    firebase.auth().signOut();
+     });
   });
 </script>
+
 
 
 <script src="/static/script.js"></script>

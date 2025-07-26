@@ -198,8 +198,14 @@
       document.getElementById("dashUserEmail").textContent = user.email;
       document.getElementById("profileImagePreview").src = user.photoURL;
 
-      localStorage.setItem("userPoints", "120");
-      document.getElementById("userPoints").textContent = "120";
+     // Only set to 200 if not already set
+if (localStorage.getItem("userPoints") === null) {
+  localStorage.setItem("userPoints", "200");
+}
+
+// Always reflect current value from localStorage
+document.getElementById("userPoints").textContent = localStorage.getItem("userPoints");
+
     }
   });
 
@@ -232,18 +238,10 @@
     };
     reader.readAsDataURL(event.target.files[0]);
   }
+  
 </script>
-<script>
-  // Set initial value (only if userPoints not found)
-  if (localStorage.getItem("userPoints") === null) {
-    localStorage.setItem("userPoints", "200");
-  }
 
-  const pointsDisplay = document.getElementById("userPoints");
-  if (pointsDisplay) {
-    pointsDisplay.textContent = localStorage.getItem("userPoints");
-  }
-</script>
+
 
 
 

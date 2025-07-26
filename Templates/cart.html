@@ -8,14 +8,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>ReWare Clothing</title>
 </head>
-
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
   import {
     getAuth,
     onAuthStateChanged,
   } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
   const firebaseConfig = {
     apiKey: "AIzaSyAxtSJ5KqfiKjJ7ybOXdqBIqR9Kj1Vaxk8",
     authDomain: "reware-clothing-7d43e.firebaseapp.com",
@@ -25,35 +23,28 @@
     appId: "1:678123595211:web:0e0d1604c0e7929507024e",
     measurementId: "G-HNSSKC332H"
   };
-
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-
   const userInfo = document.getElementById("userInfo");
   const loginBtn = document.getElementById("loginBtn");
   const userName = document.getElementById("navUserName");
   const userPhoto = document.getElementById("navUserPhoto");
-
   // FAST LOAD FROM CACHE
   const cachedName = localStorage.getItem("userName");
   const cachedPhoto = localStorage.getItem("userPhoto");
-
   if (cachedName && cachedPhoto) {
     userName.textContent = cachedName;
     userPhoto.src = cachedPhoto;
     userInfo.classList.remove("hidden");
     loginBtn.classList.add("hidden");
   }
-
   // Firebase Real Auth Check (ensure session is valid)
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const { displayName, photoURL } = user;
-
       // Save to localStorage for faster next loads
       localStorage.setItem("userName", displayName);
       localStorage.setItem("userPhoto", photoURL);
-
       // Preload image to avoid flicker
       const img = new Image();
       img.src = photoURL;
@@ -72,7 +63,6 @@
     }
   });
 </script>
-
 <body>
   <!-- Navbar -->
 <div class="bg-white shadow-md px-6 py-4 fixed top-0 left-0 w-full z-50">
@@ -81,14 +71,12 @@
     <h1 class="text-2xl font-semibold text-gray-800">
       <span class="text-orange-500 font-bold">Re</span>Wear
     </h1>
-
     <!-- Hamburger Button (Mobile Only) -->
 <div class="md:hidden text-right px-4 py-2">
   <button class="text-gray-800 text-3xl focus:outline-none cursor-pointer" onclick="toggleMenu()">
     &#9776;
   </button>
 </div>
-
 <!-- Side Panel -->
 <div id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
   <div class="flex justify-between items-center px-4 py-4 border-b">
@@ -104,7 +92,6 @@
     <li><a href="/templates/login.html" onclick="toggleMenu()" class="px-3 py-2 bg-orange-500 text-white hover:bg-white border-2 hover:border-orange-500 hover:text-black rounded-md">Login</a></li>
   </ul>
 </div>
-
     <!-- Nav Links -->
     <ul id="navMenu" class="hidden md:flex flex-col md:flex-row gap-6 mt-4 md:mt-0 text-gray-700 font-semibold">
       <li>
@@ -122,7 +109,6 @@
       <li>
         <a href="/templates/contact_us.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Contact</a>
       </li>
-
       <!-- USER PROFILE -->
       <li id="userInfo" class="hidden">
         <a href="/templates/Userdashboard.html" class="flex items-center gap-2">
@@ -130,7 +116,6 @@
           <span id="navUserName" class="text-gray-800 font-semibold"></span>
         </a>
       </li>
-
       <!-- LOGIN BUTTON -->
       <li id="loginBtn">
         <a href="/templates/login.html" class="px-3 py-2 bg-orange-500 text-white hover:bg-white border-2 hover:border-orange-500 hover:text-black rounded-md">
@@ -140,15 +125,13 @@
     </ul>
   </nav>
 </div>
-
-  <!-- --------------------------------------------------------------------------------------------------------- -->
-
-
-    <div class="mx-20 my-30 min-h-screen bg-gray-100">
+<div class="mx-20 my-30 min-h-screen bg-gray-100">
         <div id="cart-container" class="p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
   <!-- Cart items will be inserted here -->
 </div>
-<div class="mt-6">
+<h3>
+    <span class="text-orange-500 font-bold">Total Price</span>
+  </h3>
   <input
     type="number"
     id="productPrice"
@@ -156,26 +139,16 @@
     class="w-50 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
     disabled
   />
-
 </div>
-
 </div>
-
-
-
-
-  <!-- --------------------------------------------------------------------------------------------------------- -->
-
 <footer class="bg-[#131212] px-6 py-10 text-white mt-20">
   <div class="max-w-7xl mx-15 flex flex-col md:flex-row justify-between gap-10">
-    
     <!-- Left: Info Links -->
     <div class="md:w-1/2 grid grid-cols-2 gap-5">
       <h1 class="text-4xl font-semibold text-white">
         <span class="text-orange-500 font-bold">Re</span>Wear
       </h1>
       <br>
-
       <ul class="space-y-2">
        <p class ="text-orange-500 text-1xl">HelpFul Links</p>       
         <li><a href="/templates/About.html" class="hover:underline">About Us</a></li>
@@ -183,18 +156,13 @@
         <li><a href="/templates/Privacy.html" class="hover:underline">Privacy Policy</a></li>
         <li><a href="#" class="hover:underline">FAQs</a></li>
       </ul>
-
       <ul class="space-y-2">
         <br>
         <li><a href="/templates/index.html" class="hover:underline">Home</a></li>
         <li><a href="/templates/Listitems.html" class="hover:underline">Start Swaping</a></li>
         <li><a href="/templates/MainCategory.html" class="hover:underline">Category</a></li>
         <li><a href="/templates/login.html" class="hover:underline">Login</a></li>
-      </ul>
-
-      
-    </div>
-
+ </div>
     <!-- Right: Contact -->
     <div>
       <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
@@ -203,7 +171,6 @@
         <li>
           <input type="email" placeholder="Enter your email" class="w-full max-w-md border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"/>
         </li>
-
         <li>Phone: <a href="tel:+918000000000" class="hover:underline text-orange-500">+91 80000 00000</a></li>
         <li>Address: Thane, Maharashtra, India</li>
         <div class="space-x-4">
@@ -213,14 +180,11 @@
       </ul>
     </div>
   </div>
-
   <!-- Bottom Line -->
   <div class="text-center mt-10 text-sm text-gray-600">
     &copy; 2025 ReWear. All rights reserved By Aiden, Alison and Praful
   </div>
 </footer>
-
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -230,7 +194,6 @@
       container.innerHTML = "<p class='text-gray-600'>Your cart is empty.</p>";
       return;
     }
-
     cart.forEach((product) => {
       const item = document.createElement("div");
       item.className = "border p-4 mb-4 rounded-lg bg-white";
@@ -243,12 +206,7 @@
     });
   });
 </script>
-
-
-
-
 </body>
 <script src="/Static/cart.js" defer></script>
-
 <script src="/Static/script.js"></script>
 </html>

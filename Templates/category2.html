@@ -8,14 +8,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>ReWare Clothing</title>
 </head>
-
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
   import {
     getAuth,
     onAuthStateChanged,
   } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
   const firebaseConfig = {
     apiKey: "AIzaSyAxtSJ5KqfiKjJ7ybOXdqBIqR9Kj1Vaxk8",
     authDomain: "reware-clothing-7d43e.firebaseapp.com",
@@ -25,35 +23,28 @@
     appId: "1:678123595211:web:0e0d1604c0e7929507024e",
     measurementId: "G-HNSSKC332H"
   };
-
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-
   const userInfo = document.getElementById("userInfo");
   const loginBtn = document.getElementById("loginBtn");
   const userName = document.getElementById("navUserName");
   const userPhoto = document.getElementById("navUserPhoto");
-
   // FAST LOAD FROM CACHE
   const cachedName = localStorage.getItem("userName");
   const cachedPhoto = localStorage.getItem("userPhoto");
-
   if (cachedName && cachedPhoto) {
     userName.textContent = cachedName;
     userPhoto.src = cachedPhoto;
     userInfo.classList.remove("hidden");
     loginBtn.classList.add("hidden");
   }
-
   // Firebase Real Auth Check (ensure session is valid)
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const { displayName, photoURL } = user;
-
       // Save to localStorage for faster next loads
       localStorage.setItem("userName", displayName);
       localStorage.setItem("userPhoto", photoURL);
-
       // Preload image to avoid flicker
       const img = new Image();
       img.src = photoURL;
@@ -72,7 +63,6 @@
     }
   });
 </script>
-
 <body>
   <!-- Navbar -->
 <div class="bg-white shadow-md px-6 py-4 fixed top-0 left-0 w-full z-50">
@@ -81,14 +71,12 @@
     <h1 class="text-2xl font-semibold text-gray-800">
       <span class="text-orange-500 font-bold">Re</span>Wear
     </h1>
-
     <!-- Hamburger Button (Mobile Only) -->
 <div class="md:hidden text-right px-4 py-2">
   <button class="text-gray-800 text-3xl focus:outline-none cursor-pointer" onclick="toggleMenu()">
     &#9776;
   </button>
 </div>
-
 <!-- Side Panel -->
 <div id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
   <div class="flex justify-between items-center px-4 py-4 border-b">
@@ -104,7 +92,6 @@
     <li><a href="/templates/login.html" onclick="toggleMenu()" class="px-3 py-2 bg-orange-500 text-white hover:bg-white border-2 hover:border-orange-500 hover:text-black rounded-md">Login</a></li>
   </ul>
 </div>
-
     <!-- Nav Links -->
     <ul id="navMenu" class="hidden md:flex flex-col md:flex-row gap-6 mt-4 md:mt-0 text-gray-700 font-semibold">
       <li>
@@ -122,7 +109,6 @@
       <li>
         <a href="/templates/contact_us.html" class="px-3 py-2 rounded-md transition-all duration-[900ms] ease-in-out hover:text-orange-500 hover:underline decoration-orange-500">Contact</a>
       </li>
-
       <!-- USER PROFILE -->
       <li id="userInfo" class="hidden">
         <a href="/templates/Userdashboard.html" class="flex items-center gap-2">
@@ -130,7 +116,6 @@
           <span id="navUserName" class="text-gray-800 font-semibold"></span>
         </a>
       </li>
-
       <!-- LOGIN BUTTON -->
       <li id="loginBtn">
         <a href="/templates/login.html" class="px-3 py-2 bg-orange-500 text-white hover:bg-white border-2 hover:border-orange-500 hover:text-black rounded-md">
@@ -141,15 +126,10 @@
   </nav>
 </div>
 <br><br><br>
-
-
-  <!-- --------------------------------------------------------------------------------------------------------- -->
-
 <section class="bg-white py-10 px-4">
   <div class="max-w-0xl mx-0 mb-10">
     <img src="/images/banner2.jpg" alt="T-shirts banner" class="w-500 rounded-md shadow-lg" />
   </div>
-
   <!-- Heading and Categories -->
   <div class="text-center mb-6">
     <h2 class="text-5xl font-semibold mb-2">Browse Pants</h2> 
@@ -164,235 +144,193 @@
   <!-- Item Cards -->
   <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
     <!-- Single Card -->
-    <!-- CARD 1 -->
+   
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 5.jpg" alt="ChillTuck" class="product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">ChillTuck</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹499</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="ChillTuck" data-product-price="499">Add To Cart</button>
 </div>
-
-<!-- CARD 2 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 2.png" alt="Red Ones" class=" product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">Red Ones</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹599</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="Red Ones" data-product-price="599">Add To Cart</button>
 </div>
-
-<!-- CARD 3 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 3.jpg" alt="10-10" class=" product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">10-10</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="10-10" data-product-price="999">Add To Cart</button>
 </div>
-
-<!-- CARD 4 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 4.jpg" alt="Yours Fit" class=" product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">Yours Fit</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹599</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="Yours Fit" data-product-price="599">Add To Cart</button>
 </div>
-
-<!-- CARD 5 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 1.png" alt="Linear Fit" class=" product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold prodcut-name">Linear Fit</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹1999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="Linear Fit" data-product-price="1999">Add To Cart</button>
 </div>
-
-<!-- CARD 6 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 6.jpg" alt="Blue Mountains" class=" product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">Blue Mountains</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹900</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="Blue Mountains" data-product-price="900">Add To Cart</button>
 </div>
-
-<!-- CARD 7 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 7.png" alt="BreezeFit" class="product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">BreezeFit</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹899</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="BreezeFit" data-product-price="899">Add To Cart</button>
 </div>
-
-<!-- CARD 8 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 8.png" alt="Tapertone" class=" product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">Tapertone</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹399</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="Tapertone" data-product-price="399">Add To Cart</button>
 </div>
-
-<!-- CARD 9 -->
 <div class="bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 9.jpg" alt="Shape U" class=" product-image w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="text-lg font-semibold product-name">Shape U</h3>
   <p class="text-gray-600 text-sm mb-2 product-price">₹999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold" data-product-name="Shape U" data-product-price="999">Add To Cart</button>
 </div>
-
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 10.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Looks Fit</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹699</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 11.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Gold Looks</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹1000</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 12.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Tape</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹899</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 13.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Metro Fit</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 14.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Luxer Fit</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹1000</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 15.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Best UK</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹1999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Ladies Pant 16.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">USA Assoc</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹3500</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 17.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Super Free</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 18.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">FlexForm</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹850</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 19.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Slate Line</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹899</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
-
-    <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
+ <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 20.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Hell Lines</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹1999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 21.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Shell Arcade</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹1599</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 22.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Apple Fit</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹399</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 23.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Well Good</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 24.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">True Being</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹300</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 25.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Shell Fit</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹859</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 26.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">US Fits</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹900</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 27.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Chicago Jords</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹3000</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 28.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Ali Extreme</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹999</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 29.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Rep Goats</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹899</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
-
-    <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
+ <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 30.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">Unnamed Product</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹899</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 31.png" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">70 says</h3>
   <p class="product-price text-gray-600 text-sm mb-2">₹750</p>
   <button class="add-to-cart-btn bg-orange-500 text-white text-xs px-3 py-2 rounded cursor-pointer hover:bg-orange-600 transition duration-300 font-semibold">Add To Cart</button>
 </div>
-
 <div class="product-card bg-white rounded-lg border border-gray-300 p-4 shadow hover:shadow-lg transition">
   <img src="/images/Mens Pant 32.jpg" alt="T-shirt" class="w-full h-100 object-contain mb-4 rounded-xl"/>
   <h3 class="product-name text-lg font-semibold">7&10</h3>

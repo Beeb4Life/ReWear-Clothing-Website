@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.createElement("button");
     button.id = "checkoutButton";
     button.textContent = "Checkout";
-    button.className = "bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded";
+    button.className = "bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded cursor:pointer";
 
     button.addEventListener("click", () => {
       alert("Sorry it's under maintanance");
